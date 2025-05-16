@@ -50,6 +50,18 @@ small_world/
 ```
 conda env create -f environment.yml
 ```
+
+Список основных библиотек и их версий:
+```
+brian2==2.8.0.4
+brian2tools==0.3
+cpython==3.10.16
+matplotlib==3.10.0
+networkx==3.4.2
+scipy==1.15.2
+numpy==2.1.3
+```
+
 # Подготовка данных и модели для обучения
 Для дальнейшей работы необходимо скачать MNIST. Это можно сделать через скрипт ```download_MNIST.py```:
 
