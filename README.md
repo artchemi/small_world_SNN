@@ -22,15 +22,11 @@ basic/
 │
 ├── src
 │├── evaluation.py
-│├── model_SW.py
+│├── model_basic_train.py
 │├── random_conn_generator
 │└── utils_data.py
 │
 ├── weights   -   сюда сохраняются веса во время обучения
-│├── small_world   -   внутрислойные веса в слое возбуждающих нейронов
-││├── AeSW_0.npy
-││└── AeSW_{i}.npy
-││
 │├── theta_dir   -   коэффициенты гомеостазиса
 ││├── theta_A1000.npy
 ││└── theta_A{i}.npy
@@ -100,7 +96,7 @@ python src/random_conn_generator.py
 Запуск обучения осуществляется следующей командой:
 
 ```
-python model_SW_train.py
+python model_basic_train.py
 ```
 
 Результаты по динамике весов сохраняются в ```weights/```.
