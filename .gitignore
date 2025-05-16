@@ -1,2 +1,5 @@
 # Folder contains MNIST
 mnist/ 
+
+# Папка с инициализирвоанными весами
+random/

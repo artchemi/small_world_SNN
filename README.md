@@ -1,6 +1,7 @@
 # Краткая структура проекта
 ```
 small_world/
+│
 ├── mnist
 │├── t10k-images.idx3-ubyte
 │├── t10k-labels.idx1-ubyte
@@ -8,19 +9,23 @@ small_world/
 │├── train-images.idx3-ubyte
 │├── training.pickle
 │└── train-labels.idx1-ubyte
+│
 ├── random   -   инициализированные веса модели
 │├── AeAi.npy   -   Межслойные веса (?)
 │├── AiAe.npy
 │├── XeAe.npy
 │└── XeAi.npy
+│
 ├── results   -   результаты экспериментов
 │├── XXX
 │└── XXX
+│
 ├── src
 │├── evaluation.py
 │├── model_SW.py
 │├── random_conn_generator
 │└── utils_data.py
+│
 ├── config.py    -   все параметры модели и обучения настраивать здесь
 ├── download_MNIST.py   -   загрузка MNIST в папку с Google Drive
 ├── 
