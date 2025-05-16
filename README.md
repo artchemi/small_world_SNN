@@ -40,8 +40,8 @@ small_world/
 │ └── XeAe{i}.npy
 │
 ├── config.py    -   все параметры модели и обучения настраивать здесь
-├── download_MNIST.py   -   загрузка MNIST в папку с Google Drive
-├── 
+└── download_MNIST.py   -   загрузка MNIST в папку с Google Drive
+
 ```
 
 # 📦 Установка окружения
