@@ -13,7 +13,7 @@ import os
 import scipy 
 from brian2 import *
 
-from functions.data import get_labeled_data
+from utils_data import get_labeled_data
 
 #------------------------------------------------------------------------------ 
 # functions
