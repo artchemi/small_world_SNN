@@ -8,6 +8,11 @@ import scipy.ndimage as sp
 import numpy as np
 import pylab
 import random
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))    # Импортируем корневую директорию
+from config import N_NEURONS
 
 # Зафиксировали seed для воспроизводимости
 seed = 42
@@ -43,7 +48,7 @@ def sparsenMatrix(baseMatrix, pConn):
 def create_weights():
     
     nInput = 784
-    nE = 100
+    nE = N_NEURONS
     nI = nE 
     dataPath = './random/'
     weight = {}

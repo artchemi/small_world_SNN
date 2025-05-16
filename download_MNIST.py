@@ -11,5 +11,7 @@ def main():
     for mnist_name, url in zip(MNIST_NAMES, DATA_PATH):
         gdown(url, DATA_PATH + mnist_name)
 
+    os.makedirs('random/')
+
 if __name__ == '__main__':
     main()

@@ -18,7 +18,11 @@ import networkx as nx
 import numpy as np
 import random
 
-from functions.data import get_labeled_data
+from utils_data import get_labeled_data
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))    # Импортируем корневую директорию
+
+from config import N_NEURONS
 
 # Устанавливаем временные каталоги для кеша
 os.environ['MPLCONFIGDIR'] = '/tmp/matplotlib'
