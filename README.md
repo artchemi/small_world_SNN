@@ -11,12 +11,12 @@ small_world/
 │└── train-labels.idx1-ubyte
 │
 ├── random   -   инициализированные веса модели
-│├── AeAi.npy   -   Межслойные веса (?)
+│├── AeAi.npy
 │├── AiAe.npy
-│├── XeAe.npy
+│├── XeAe.npy   -   межслойные веса
 │└── XeAi.npy
 │
-├── results   -   результаты экспериментов
+├── old_results   -   старые результаты экспериментов
 │├── XXX
 │└── XXX
 │
@@ -25,6 +25,19 @@ small_world/
 │├── model_SW.py
 │├── random_conn_generator
 │└── utils_data.py
+│
+├── weights   -   сюда сохраняются веса во время обучения
+│├── small_world   -   внутрислойные веса в слое возбуждающих нейронов
+││├── AeSW_0.npy
+││└── AeSW_{i}.npy
+││
+│├── theta_dir   -   коэффициенты гомеостазиса
+││├── theta_A1000.npy
+││└── theta_A{i}.npy
+││
+│└── XeAe_dir   -   межслойные веса
+│ ├── XeAe1000.npy
+│ └── XeAe{i}.npy
 │
 ├── config.py    -   все параметры модели и обучения настраивать здесь
 ├── download_MNIST.py   -   загрузка MNIST в папку с Google Drive

@@ -19,6 +19,8 @@ seed = 42
 np.random.seed(seed)
 random.seed(seed)
 
+os.makedirs('random/', exist_ok=True)
+
 
 def randomDelay(minDelay, maxDelay):
     return np.random.rand()*(maxDelay-minDelay) + minDelay

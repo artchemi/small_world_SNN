@@ -22,7 +22,7 @@ from utils_data import get_labeled_data
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))    # Импортируем корневую директорию
 
-from config import N_NEURONS
+from config import *
 
 # Устанавливаем временные каталоги для кеша
 os.environ['MPLCONFIGDIR'] = '/tmp/matplotlib'
@@ -31,9 +31,8 @@ os.environ['CYTHON_CACHE_DIR'] = '/tmp/cython'
 prefs.codegen.target = 'numpy'
 
 # Зафиксировали seed для воспроизводимости
-seed = 42
-np.random.seed(seed)
-random.seed(seed)
+np.random.seed(SEED)
+random.seed(SEED)
 
 # specify the location of the MNIST data
 MNIST_data_path = './mnist/'
@@ -88,7 +87,7 @@ def save_connections(ending = ''):
         if len(conn.i) > 0:  # Проверяем, есть ли соединения
             weight_values[conn.i, conn.j] = conn.w[:]  # Получаем значения весов
         # Создаем директорию, если ее нет
-        os.makedirs(data_path + 'weights/', exist_ok=True)
+        # os.makedirs(data_path + 'weights/', exist_ok=True)
         np.save(data_path + 'weights/XeAe_dir/' + connName + ending, weight_values)
 
 def save_theta(ending = ''):
@@ -216,8 +215,14 @@ print('time needed to load test set:', end - start)
 #------------------------------------------------------------------------------
 test_mode = False # Change this to False to retrain the network
 
-np.random.seed(0)
 data_path = './' # TODO: This should be a parameter
+
+# Создаем директории для сохранения результатов 
+os.makedirs(data_path + 'weights/', exist_ok=True)
+os.makedirs(data_path + 'weights/theta_dir/', exist_ok=True)
+os.makedirs(data_path + 'weights/XeAe_dir/', exist_ok=True)
+os.makedirs(data_path + 'weights/small_world/', exist_ok=True)
+
 if test_mode:
     weight_path = data_path + 'weights/'
     num_examples = 10000 * 1
@@ -237,11 +242,11 @@ else:
         record_spikes = True
     ee_STDP_on = True
 
-accuracy_update_interval = 1000
+accuracy_update_interval = ACCURACY_UPDATE_INTERVAL
 
 ending = ''
 n_input = 784
-n_e = 100
+n_e = N_NEURONS
 n_i = n_e
 single_example_time =   0.35 * b2.second #
 resting_time = 0.15 * b2.second
@@ -367,6 +372,7 @@ for subgroup_n, name in enumerate(population_names):
     for conn_type in recurrent_conn_names:
         connName = name+conn_type[0]+name+conn_type[1]
         weightMatrix = get_matrix_from_file(weight_path + '../random/' + connName + ending + '.npy')
+        # weightMatrix = get_matrix_from_file('random/' + connName + ending + '.npy')
         model = 'w : 1'
         pre = 'g%s_post += w' % conn_type[0]
         post = ''
@@ -426,8 +432,7 @@ for name in input_connection_names:
         connections[connName].w = weightMatrix[connections[connName].i, connections[connName].j]
 
 # --- Инициализация малого мира ---
-# здесь можно поменять количество соседей и вероятность образования связи
-G = nx.watts_strogatz_graph(n_e, int(n_e*0.8), 0.1, seed=42)
+G = nx.watts_strogatz_graph(N_NODES, K_NODES, P_DIRECTION, seed=SEED)
 
 print(f'Count of edges: {len(G.edges())}')
 
